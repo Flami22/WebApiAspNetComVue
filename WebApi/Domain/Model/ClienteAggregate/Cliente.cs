@@ -13,6 +13,9 @@ namespace WebApi.Domain.Model.ClienteAggregate
         public string? photo { get; private set; }
         public string cpf {get; private set;}
         public string data_nascimento {get; private set;}
+        public datetime createdAt { get; private set;}
+        public datetime updatedAt { get; private set;}
+        public bool ativo { get; private set; }
 
         public Cliente (string name, int age, string photo, string cpf, string data_nascimento)
         {
@@ -21,6 +24,9 @@ namespace WebApi.Domain.Model.ClienteAggregate
             this.photo = photo;
             this.cpf = cpf;
             this.data_nascimento = data_nadata_nascimento
+            this.createdAt = datetime.now;
+            this.updatedAt = datetime.now;
+            this.ativo = true
         }
     }
 }
