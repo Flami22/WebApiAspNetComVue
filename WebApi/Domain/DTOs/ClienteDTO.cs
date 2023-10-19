@@ -1,6 +1,6 @@
 ﻿namespace WebApi.Domain.DTOs
 {
-    public class EmployeeDTO
+    public class ClienteDTO
     {
         public int Id { get; set; }
         public string NameEmployee { get; set; }

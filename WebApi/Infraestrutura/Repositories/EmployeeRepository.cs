@@ -3,11 +3,11 @@ using WebApi.Domain.Model.EmployeeAggregate;
 
 namespace WebApi.Infraestrutura.Repositories
 {
-    public class EmployeeRepository : IEmployeeRepository
+    public class ClienteRepository : IClienteRepository
     {
         private readonly ConnectionContext _context = new ConnectionContext();
 
-        public void Add(Employee employee)
+        public void Add(Cliente employee)
         {
             _context.Employees.Add(employee);
             _context.SaveChanges();
@@ -26,7 +26,7 @@ namespace WebApi.Infraestrutura.Repositories
                 }).ToList();
         }
 
-        public Employee? Get(int id)
+        public Cliente ? Get(int id)
         {
             return _context.Employees.Find(id);
         }
