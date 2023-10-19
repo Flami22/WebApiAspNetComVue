@@ -8,15 +8,15 @@ using WebApi.Domain.Model.EmployeeAggregate;
 namespace WebApi.Controllers.v2
 {
     [ApiController]
-    [Route("api/v{version:apiVersion}/employee")]
+    [Route("api/v{version:apiVersion}/cadastroClientes")]
     [ApiVersion("2.0")]
-    public class EmployeeController : ControllerBase
+    public class CadastroClientesController : ControllerBase
     {
-        private readonly IEmployeeRepository _employeeRepository;
+        private readonly IEmployeeRepository _cadastroClientesRepository;
         private readonly ILogger<EmployeeController> _logger;
         private readonly IMapper _mapper;
 
-        public EmployeeController(IEmployeeRepository employeeRepository, ILogger<EmployeeController> logger, IMapper mapper)
+        public cadastroCLientesController(ICadastroClientesRepository cadastroClientesRepository, ILogger<EmployeeController> logger, IMapper mapper)
         {
             _employeeRepository = employeeRepository ?? throw new ArgumentNullException(nameof(employeeRepository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
@@ -25,7 +25,7 @@ namespace WebApi.Controllers.v2
 
         [Authorize]
         [HttpPost]
-        public IActionResult Add([FromForm] EmployeeViewModel employeeView)
+        public IActionResult Add([FromForm] ClienteViewModel employeeView)
         {
 
             var filePath = Path.Combine("Storage", employeeView.Photo.FileName);
@@ -33,9 +33,9 @@ namespace WebApi.Controllers.v2
             using Stream fileStream = new FileStream(filePath, FileMode.Create);
             employeeView.Photo.CopyTo(fileStream);
 
-            var employee = new Employee(employeeView.Name, employeeView.Age, filePath);
+            var cliente = new Cliente(employeeView.Name, employeeView.Age, filePath);
 
-            _employeeRepository.Add(employee);
+            _cadastroClientesRepository.Add(clientes)
 
             return Ok();
         }
@@ -45,32 +45,21 @@ namespace WebApi.Controllers.v2
         [Route("{id}/download")]
         public IActionResult DownloadPhoto(int id)
         {
-            var employee = _employeeRepository.Get(id);
+            var cliente = _cadastroClientesRepository.Get(id);
 
             var dataBytes = System.IO.File.ReadAllBytes(employee.photo);
 
             return File(dataBytes, "image/png");
         }
 
-        [HttpGet]
-        public IActionResult Get(int pageNumber, int pageQuantity)
-        {
-            _logger.Log(LogLevel.Error, "Teve um Erro");
-
-            var employess = _employeeRepository.Get(pageNumber, pageQuantity);
-
-            _logger.LogInformation("Teste");
-
-            return Ok(employess);
-        }
 
         [HttpGet]
         [Route("{id}")]
         public IActionResult Search(int id)
         {
-            var employess = _employeeRepository.Get(id);
+            var employess = _cadastroClientesRepository.Get(id);
 
-            var employeesDTOS = _mapper.Map<EmployeeDTO>(employess);
+            var employeesDTOS =clienter.Map<EmployeeDTO>(employess);
 
             return Ok(employeesDTOS);
         }

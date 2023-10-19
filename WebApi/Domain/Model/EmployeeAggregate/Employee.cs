@@ -1,23 +1,26 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApi.Domain.Model.EmployeeAggregate
 {
-    [Table("employee")]
-    public class Employee
+    [Table("Cliente")]
+    public class Cliente
     {
         [Key]
         public int id { get; private set; }
         public string name { get; private set; }
         public int age { get; private set; }
         public string? photo { get; private set; }
+        public string cpf {get; private set;}
+        public string data_nascimento {get; private set;}
 
-        public Employee() { }
-        public Employee(string name, int age, string photo)
+        public Cliente (string name, int age, string photo, string cpf, string data_nascimento)
         {
-            this.name = name ?? throw new ArgumentNullException(nameof(name));
+            this.name = name ?? throw new ArgumentNullException(nameof(name))
             this.age = age;
             this.photo = photo;
+            this.cpf = cpf;
+            this.data_nascimento = data_nadata_nascimento
         }
     }
 }
