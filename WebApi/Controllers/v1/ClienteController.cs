@@ -10,7 +10,7 @@ namespace WebApi.Controllers.v1
     [ApiController]
     [Route("api/v{version:apiVersion}/employee")]
     [ApiVersion("1.0")]
-    public class EmployeeController : ControllerBase
+    public class ClienteController : ControllerBase
     {
         private readonly IEmployeeRepository _employeeRepository;
         private readonly ILogger<EmployeeController> _logger;
