@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
 using WebApi.Domain.Model.CompanyAggregate;
-using WebApi.Domain.Model.ClienteAggregate;
+using WebApi.Domain.Model.Cliente;
 
 namespace WebApi.Infraestrutura
 {
