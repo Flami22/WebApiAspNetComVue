@@ -7,7 +7,7 @@ namespace WebApi.Infraestrutura
 {
     public class ConnectionContext : DbContext
     {
-        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Company> Company { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
