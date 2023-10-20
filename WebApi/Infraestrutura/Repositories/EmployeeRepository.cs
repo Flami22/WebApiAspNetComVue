@@ -1,5 +1,5 @@
 ﻿using WebApi.Domain.DTOs;
-using WebApi.Domain.Model.EmployeeAggregate;
+using WebApi.Domain.Model.Cliente;
 
 namespace WebApi.Infraestrutura.Repositories
 {
@@ -7,28 +7,28 @@ namespace WebApi.Infraestrutura.Repositories
     {
         private readonly ConnectionContext _context = new ConnectionContext();
 
-        public void Add(Cliente employee)
+        public void Add(Cliente cliente)
         {
-            _context.Employees.Add(employee);
+            _context.Clientes.Add(cliente);
             _context.SaveChanges();
         }
 
-        public List<EmployeeDTO> Get(int pageNumber, int pageQuantity)
+        public List<ClientesDTO> Get(int pageNumber, int pageQuantity)
         {
-            return _context.Employees.Skip(pageNumber * pageQuantity)
+            return _context.Clientes.Skip(pageNumber * pageQuantity)
                 .Take(pageQuantity)
                 .Select(b =>
-                new EmployeeDTO()
+                new ClienteDTO()
                 {
                     Id = b.id,
-                    NameEmployee = b.name,
+                    NomeCliente = b.name,
                     Photo = b.photo
                 }).ToList();
         }
 
         public Cliente ? Get(int id)
         {
-            return _context.Employees.Find(id);
+            return _context.Clientes.Find(id);
         }
     }
 }
