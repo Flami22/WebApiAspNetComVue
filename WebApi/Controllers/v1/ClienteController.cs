@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.Application.ViewModel;
 using WebApi.Domain.DTOs;
-using WebApi.Domain.Model.EmployeeAggregate;
+using WebApi.Domain.Model.Cliente;
 
 namespace WebApi.Controllers.v1
 {
