@@ -9,13 +9,13 @@ namespace WebApi.Infraestrutura.Repositories
 
         public void Add(Cliente cliente)
         {
-            _context.Clientes.Add(cliente);
+            _context.Cliente.Add(cliente);
             _context.SaveChanges();
         }
 
         public List<ClientesDTO> Get(int pageNumber, int pageQuantity)
         {
-            return _context.Clientes.Skip(pageNumber * pageQuantity)
+            return _context.Cliente.Skip(pageNumber * pageQuantity)
                 .Take(pageQuantity)
                 .Select(b =>
                 new ClienteDTO()
@@ -28,7 +28,7 @@ namespace WebApi.Infraestrutura.Repositories
 
         public Cliente ? Get(int id)
         {
-            return _context.Clientes.Find(id);
+            return _context.Cliente.Find(id);
         }
     }
 }
