@@ -8,34 +8,34 @@ using WebApi.Domain.Model.EmployeeAggregate;
 namespace WebApi.Controllers.v1
 {
     [ApiController]
-    [Route("api/v{version:apiVersion}/employee")]
+    [Route("api/v{version:apiVersion}/cliente")]
     [ApiVersion("1.0")]
     public class ClienteController : ControllerBase
     {
-        private readonly IEmployeeRepository _employeeRepository;
-        private readonly ILogger<EmployeeController> _logger;
+        private readonly IClienteRepository _clienteRepository;
+        private readonly ILogger<ClienteController> _logger;
         private readonly IMapper _mapper;
 
-        public EmployeeController(IEmployeeRepository employeeRepository, ILogger<EmployeeController> logger, IMapper mapper)
+        public ClienteController(IClienteRepository clienteRepository, ILogger<EmployeeController> logger, IMapper mapper)
         {
-            _employeeRepository = employeeRepository ?? throw new ArgumentNullException(nameof(employeeRepository));
+            _clienteRepository = clienteRepository ?? throw new ArgumentNullException(nameof(employeeRepository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
 
         [Authorize]
         [HttpPost]
-        public IActionResult Add([FromForm] EmployeeViewModel employeeView)
+        public IActionResult Add([FromForm] ClienteViewModel clienteView)
         {
 
-            var filePath = Path.Combine("Storage", employeeView.Photo.FileName);
+            var filePath = Path.Combine("Storage", clienteView.Photo.FileName);
 
             using Stream fileStream = new FileStream(filePath, FileMode.Create);
-            employeeView.Photo.CopyTo(fileStream);
+            clienteView.Photo.CopyTo(fileStream);
 
-            var employee = new Employee(employeeView.Name, employeeView.Age, filePath);
+            var cliente = new Cliente(clienteView.Name, clienteView.Age, filePath);
 
-            _employeeRepository.Add(employee);
+            _clienteRepository.Add(cliente);
 
             return Ok();
         }
@@ -45,9 +45,9 @@ namespace WebApi.Controllers.v1
         [Route("{id}/download")]
         public IActionResult DownloadPhoto(int id)
         {
-            var employee = _employeeRepository.Get(id);
+            var cliente = _clienteRepository.Get(id);
 
-            var dataBytes = System.IO.File.ReadAllBytes(employee.photo);
+            var dataBytes = System.IO.File.ReadAllBytes(cliente.photo);
 
             return File(dataBytes, "image/png");
         }
@@ -57,22 +57,22 @@ namespace WebApi.Controllers.v1
         {
             _logger.Log(LogLevel.Error, "Teve um Erro");
 
-            var employess = _employeeRepository.Get(pageNumber, pageQuantity);
+            var clientes = _clienteRepository.Get(pageNumber, pageQuantity);
 
             _logger.LogInformation("Teste");
 
-            return Ok(employess);
+            return Ok(clientes);
         }
 
         [HttpGet]
         [Route("{id}")]
         public IActionResult Search(int id)
         {
-            var employess = _employeeRepository.Get(id);
+            var clientes = _clienteRepository.Get(id);
 
-            var employeesDTOS = _mapper.Map<EmployeeDTO>(employess);
+            var ClientesDTOS = _mapper.Map<EmployeeDTO>(employess);
 
-            return Ok(employeesDTOS);
+            return Ok(ClienteDTOS);
         }
     }
 }
