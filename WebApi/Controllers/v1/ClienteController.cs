@@ -16,9 +16,9 @@ namespace WebApi.Controllers.v1
         private readonly ILogger<ClienteController> _logger;
         private readonly IMapper _mapper;
 
-        public ClienteController(IClienteRepository clienteRepository, ILogger<EmployeeController> logger, IMapper mapper)
+        public ClienteController(IClienteRepository clienteRepository, ILogger<ClienteController> logger, IMapper mapper)
         {
-            _clienteRepository = clienteRepository ?? throw new ArgumentNullException(nameof(employeeRepository));
+            _clienteRepository = clienteRepository ?? throw new ArgumentNullException(nameof(clienteRepository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
