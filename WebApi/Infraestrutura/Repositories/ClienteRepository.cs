@@ -1,7 +1,7 @@
 ﻿using WebApi.Domain.DTOs;
 using WebApi.Domain.Model.Cliente;
 
-namespace WebApi.Infraestrutura.Repositories
+namespace WebApi.Infraestrutura.Repositories.ClienteRepository 
 {
     public class ClienteRepository : IClienteRepository
     {

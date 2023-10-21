@@ -8,12 +8,15 @@ namespace WebApi.Infraestrutura
     public class ConnectionContext : DbContext
     {
         public DbSet<Cliente> Cliente { get; set; }
-        public DbSet<Company> Company { get; set; }
+        public DbSet<EnderecoCliente> EnderecoCliente { get; set; }
 
         
         protected override void onModelCreating() {
             Builder.entity<Cliente>(
-                 => e.hasKey(c => c.Id)
+              e => e.hasKey(c => c.Id)
+            )
+            Builder.entity<EnderecoCliente>(
+                e => e.hasKey(ec => ec.Id)
             )
         }
         
