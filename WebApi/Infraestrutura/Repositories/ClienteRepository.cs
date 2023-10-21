@@ -13,22 +13,14 @@ namespace WebApi.Infraestrutura.Repositories.ClienteRepository
             _context.SaveChanges();
         }
 
-        public List<ClientesDTO> Get(int pageNumber, int pageQuantity)
+        public List<ClientesDTO> Get()
         {
-            return _context.Cliente.Skip(pageNumber * pageQuantity)
-                .Take(pageQuantity)
-                .Select(b =>
-                new ClienteDTO()
-                {
-                    Id = b.id,
-                    NomeCliente = b.name,
-                    Photo = b.photo
-                }).ToList();
+            return _context.Cliente.ToList();
         }
 
-        public Cliente ? Get(int id)
+        public Cliente ? Get(guid id)
         {
-            return _context.Cliente.Find(id);
+            return _context.Cliente.include(c => c.enderecos).SingleOrDefault(id);
         }
     }
 }

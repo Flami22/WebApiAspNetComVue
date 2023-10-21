@@ -18,6 +18,7 @@ namespace WebApi.Infraestrutura
               e.property(c => c.CreatedAt).columnName("dataCadastro")
               e.property(c => c.UpdatedAt).columnName("dataAtualizacao")
               e.property(c => c.data_nascimento).columnName("dataNascimento")
+              e.hasMany( c => c.enderecos).hasForeignKey(ec => ec.clienteId)
 
             )
             Builder.entity<EnderecoCliente>(

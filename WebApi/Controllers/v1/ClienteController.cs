@@ -53,11 +53,11 @@ namespace WebApi.Controllers.v1
         }
 
         [HttpGet]
-        public IActionResult Get(int pageNumber, int pageQuantity)
+        public IActionResult Get()
         {
             _logger.Log(LogLevel.Error, "Teve um Erro");
 
-            var clientes = _clienteRepository.Get(pageNumber, pageQuantity);
+            var clientes = _clienteRepository.Get();
 
             _logger.LogInformation("Teste");
 
@@ -66,11 +66,11 @@ namespace WebApi.Controllers.v1
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult Search(int id)
+        public IActionResult Search(guid id)
         {
             var clientes = _clienteRepository.Get(id);
 
-            var ClientesDTOS = _mapper.Map<EmployeeDTO>(employess);
+            var ClientesDTOS = _mapper.Map<ClienteDTO>(clientes);
 
             return Ok(ClienteDTOS);
         }
