@@ -13,9 +13,15 @@ namespace WebApi.Infraestrutura
         
         protected override void onModelCreating() {
             Builder.entity<Cliente>(
-              e => e.hasKey(c => c.Id)
+              e => 
+              e.hasKey(c => c.Id)
+              e.property(c => c.CreatedAt).columnName("dataCadastro")
+              e.property(c => c.UpdatedAt).columnName("dataAtualizacao")
+              e.property(c => c.data_nascimento).columnName("dataNascimento")
+
             )
             Builder.entity<EnderecoCliente>(
+                
                 e => e.hasKey(ec => ec.Id)
             )
         }

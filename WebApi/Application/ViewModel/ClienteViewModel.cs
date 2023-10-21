@@ -1,9 +1,10 @@
 ﻿namespace WebApi.Application.ViewModel
 {
-    public class EmployeeViewModel
+    public class ClienteViewModel
     {
         public string Name { get; set; }
-        public int Age { get; set; }
+        public int Email { get; set; }
+        public List<EnderecoContato> Enderecos { get; set; }
         public IFormFile Photo { get; set; }
     }
 }
