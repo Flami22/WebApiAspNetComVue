@@ -10,6 +10,13 @@ namespace WebApi.Infraestrutura
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Company> Company { get; set; }
 
+        
+        protected override void onModelCreating() {
+            Builder.entity<Cliente>(
+                 => e.hasKey(c => c.Id)
+            )
+        }
+        
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
           => optionsBuilder.UseNpgsql(
               "Server=localhost;" +
