@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using WebApi.Domain.Model.CompanyAggregate;
+using WebApi.Domain.Model.EnderecoCliente;
 using WebApi.Domain.Model.Cliente;
 
 namespace WebApi.Infraestrutura
@@ -30,8 +30,8 @@ namespace WebApi.Infraestrutura
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
           => optionsBuilder.UseNpgsql(
               "Server=localhost;" +
-              "Port=5432;Database=employee_sample;" +
-              "User Id=postgres;" +
-              "Password=123;");
+              "Port=5432;Database=JhExpress;" +
+              "User Id=root;" +
+              "Password=12345678;");
     }
 }
