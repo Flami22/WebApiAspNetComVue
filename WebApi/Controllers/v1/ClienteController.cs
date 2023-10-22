@@ -58,21 +58,22 @@ namespace WebApi.Controllers.v1
             _logger.Log(LogLevel.Error, "Teve um Erro");
 
             var clientes = _clienteRepository.Get();
+            var viewModel = _mapper.map<list<ClienteViewModel>>(clientes)
 
             _logger.LogInformation("Teste");
 
-            return Ok(clientes);
+            return Ok(viewModel);
         }
 
         [HttpGet]
         [Route("{id}")]
         public IActionResult Search(guid id)
         {
-            var clientes = _clienteRepository.Get(id);
+            var cliente = _clienteRepository.Get(id);
 
-            var ClientesDTOS = _mapper.Map<ClienteDTO>(clientes);
+            var viewModelSeach = _mapper.Map<ClienteViewModel>(cliente);
 
-            return Ok(ClienteDTOS);
+            return Ok(viewModelSearch);
         }
     }
 }
