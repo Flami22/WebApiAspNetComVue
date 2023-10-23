@@ -7,7 +7,7 @@ namespace WebApi.Domain.Model.Cliente
     public class Cliente
     {
         [Key]
-        public guid id { get; private set; }
+        public int id { get; private set; }
         public string name { get; private set; }
         public string email { get; private set; }
         public string password { get; private set;}

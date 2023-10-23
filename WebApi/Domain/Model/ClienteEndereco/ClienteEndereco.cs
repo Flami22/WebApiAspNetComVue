@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace WebApi.Domain.Model.EnderecoCliente
+namespace WebApi.Domain.Model.ClienteEndereco
 
 {
-    [Table("enderecoCliente")]
-    public class EnderecoCliente
+    [Table("clienteEndereco")]
+    public class ClienteEndereco
     {
         [Key]
         public int Id { get; set; }

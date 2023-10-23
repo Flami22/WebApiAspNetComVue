@@ -13,12 +13,12 @@ namespace WebApi.Infraestrutura.Repositories.ClienteRepository
             _context.SaveChanges();
         }
 
-        public List<ClientesDTO> Get()
+        public List<ClienteDTO> Get()
         {
             return _context.Cliente.ToList();
         }
 
-        public Cliente ? Get(guid id)
+        public Cliente ? Get(int id)
         {
             return _context.Cliente.include(c => c.enderecos).SingleOrDefault(id);
         }
