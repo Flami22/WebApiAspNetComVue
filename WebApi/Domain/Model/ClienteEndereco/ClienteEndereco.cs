@@ -13,6 +13,6 @@ namespace WebApi.Domain.Model.ClienteEndereco
         public string Numero { get; set; }
         public string Cep { get; set; }
         public string Complemento { get; set; }
-        public string ClienteId { get; set; }
+        public int ClienteId { get; set; }
     }
 }
