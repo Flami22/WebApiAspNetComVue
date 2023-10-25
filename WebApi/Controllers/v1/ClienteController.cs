@@ -57,6 +57,7 @@ namespace WebApi.Controllers.v1
             _logger.Log(LogLevel.Error, "Teve um Erro");
 
             var clientes = _clienteRepository.Get();
+            
             var viewModel = _mapper.map<list<ClienteViewModel>>(clientes)
 
             _logger.LogInformation("Teste");
@@ -70,7 +71,7 @@ namespace WebApi.Controllers.v1
         {
             var cliente = _clienteRepository.Get(id);
 
-            var viewModelSeach = _mapper.Map<ClienteViewModel>(cliente);
+            var viewModelSearch = _mapper.Map<ClienteViewModel>(cliente);
 
             return Ok(viewModelSearch);
         }
@@ -81,7 +82,10 @@ namespace WebApi.Controllers.v1
         public IActionResult addEndereco(EnderecoInputModel clienteEnderecoInput, int id)
         {
             clienteEnderecoInput.ClienteId = id
-            var clienteEndereco = new ClienteEndereco(clienteEnderecoInput.Logradouro, clienteEnderecoInput.Numero, clienteEnderecoInput.Complemento, clienteEnderecoInput.Cep,clienteEnderecoInput.ClienteId)
+            
+            var clienteEndereco = new ClienteEndereco(clienteEnderecoInput.Logradouro, clienteEnderecoInput.Numero, clienteEnderecoInput.Complemento, clienteEnderecoInput.Cep,clienteEnderecoInput.ClienteId);
+
+            return Ok();
         }
     }
 }
