@@ -24,15 +24,15 @@ namespace WebApi.Controllers.v1
 
         [Authorize]
         [HttpPost]
-        public IActionResult Add([FromForm] ClienteViewModel clienteView)
+        public IActionResult Add([FromForm] ClienteInputModel clienteInput)
         {
 
-            var filePath = Path.Combine("Storage", clienteView.Photo.FileName);
+            var filePath = Path.Combine("Storage", clienteInput.Photo.FileName);
 
             using Stream fileStream = new FileStream(filePath, FileMode.Create);
             clienteView.Photo.CopyTo(fileStream);
 
-            var cliente = new Cliente(clienteView.Name, clienteView.Age, filePath);
+            var cliente = new Cliente(clienteInput.Nome, clienteInput.Email clienteInput.Password, filePath, clienteInput.Cpf, clienteInput.Data_nascimento);
 
             _clienteRepository.Add(cliente);
 
