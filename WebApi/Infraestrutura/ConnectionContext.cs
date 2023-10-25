@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
-using WebApi.Domain.Model.EnderecoCliente;
+using WebApi.Domain.Model.ClienteEndereco;
 using WebApi.Domain.Model.Cliente;
 
 namespace WebApi.Infraestrutura
@@ -8,7 +8,7 @@ namespace WebApi.Infraestrutura
     public class ConnectionContext : DbContext
     {
         public DbSet<Cliente> Cliente { get; set; }
-        public DbSet<EnderecoCliente> EnderecoCliente { get; set; }
+        public DbSet<ClienteEndereco> ClienteEndereco { get; set; }
 
         
         protected override void onModelCreating() {
