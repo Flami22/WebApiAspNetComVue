@@ -7,6 +7,11 @@ namespace WebApi.Domain.Model.Cliente
         void Add(Cliente cliente);
 
         List<ClienteDTO> Get();
+        
         Cliente ? Get(int id);
+
+        void Update(Cliente cliente);
+
+        void Delete(int id);
     }
 }
