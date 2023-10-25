@@ -22,7 +22,8 @@ namespace WebApi.Infraestrutura.Repositories.ClienteRepository
         {
             return _context.Cliente.include(c => c.enderecos).SingleOrDefault(id);
         }
-        public void (ClienteEndereco clienteEndereco)
+        
+        public void addEndereco (ClienteEndereco clienteEndereco)
         {
             _context.ClienteEndereco.add(clienteEndereco);
             _context.SaveChanges();
