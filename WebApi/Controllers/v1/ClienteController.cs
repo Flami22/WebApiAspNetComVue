@@ -66,13 +66,22 @@ namespace WebApi.Controllers.v1
 
         [HttpGet]
         [Route("{id}")]
-        public IActionResult Search(guid id)
+        public IActionResult Search(int id)
         {
             var cliente = _clienteRepository.Get(id);
 
             var viewModelSeach = _mapper.Map<ClienteViewModel>(cliente);
 
             return Ok(viewModelSearch);
+        }
+
+
+        [HttpPost]
+        [Route("{id}/adress")]
+        public IActionResult addEndereco(EnderecoInputModel clienteEnderecoInput, int id)
+        {
+            clienteEnderecoInput.ClienteId = id
+            var clienteEndereco = new ClienteEndereco(clienteEnderecoInput.Logradouro, clienteEnderecoInput.Numero, clienteEnderecoInput.Complemento, clienteEnderecoInput.Cep,clienteEnderecoInput.ClienteId)
         }
     }
 }
