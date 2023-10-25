@@ -22,6 +22,21 @@ namespace WebApi.Infraestrutura.Repositories.ClienteRepository
         {
             return _context.Cliente.include(c => c.enderecos).SingleOrDefault(id);
         }
+
+        public void Update(int id, Cliente cliente)
+        {
+            var cliente  = _context.Cliente.SingleOrDefault(id)
+            _context.Cliente.Update(cliente);
+            _context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var cliente  = _context.Cliente.SingleOrDefault(id)
+            cliente.Ativo = false;
+            _context.Cliente.Update(cliente);
+            _context.SaveChanges();
+        }
         
         public void addEndereco (ClienteEndereco clienteEndereco)
         {
