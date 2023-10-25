@@ -21,7 +21,7 @@ namespace WebApi.Infraestrutura
               e.hasMany( c => c.enderecos).hasForeignKey(ec => ec.clienteId)
 
             )
-            Builder.entity<EnderecoCliente>(
+            Builder.entity<ClienteEndereco>(
                 
                 e => e.hasKey(ec => ec.Id)
             )
