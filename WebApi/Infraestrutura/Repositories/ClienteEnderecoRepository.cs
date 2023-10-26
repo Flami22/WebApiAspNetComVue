@@ -13,7 +13,9 @@ namespace WebApi.Infraestrutura.Repositories.ClienteRepository
         
          public void AtualizarEndereco (ClienteEndereco clienteEndereco)
          {
-             
+         
+             _context.ClienteEndereco.Update(ClienteEndereco clienteEndereco)
+           
          }
         
         public void AddEndereco (ClienteEndereco clienteEndereco)
