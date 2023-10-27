@@ -23,5 +23,11 @@ namespace WebApi.Infraestrutura.Repositories.ClienteRepository
             _context.ClienteEndereco.add(clienteEndereco);
             _context.SaveChanges();
         }
+
+        public void DeletarEndereco (int id)
+        {
+          var endereco =  _context.ClienteEndereco.SingleOrDefault(id)
+          _context.ClienteEndereco.Remove(endereco)
+        }
     }
 }
