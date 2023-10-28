@@ -78,7 +78,6 @@ namespace WebApi.Controllers.v1
             return Ok(viewModelSearch);
         }
 
-
         [HttpPost]
         [Route("{id}/adress")]
         public IActionResult addEndereco(EnderecoInputModel clienteEnderecoInput, int id)
