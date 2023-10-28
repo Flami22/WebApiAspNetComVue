@@ -18,7 +18,6 @@ namespace WebApi.Controllers.v1
         public ClienteController(IClienteRepository clienteRepository, IClienteEndetecoRepository clienteEnderecoRepository,  ILogger<ClienteController> logger, IMapper mapper)
         {
             _clienteRepository = clienteRepository ?? throw new ArgumentNullException(nameof(clienteRepository));
-            
             _clienteEnderecoRepository = clienteEnderecoRepository ?? throw new ArgumentNullException(nameof(clienteEnderecoRepository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
@@ -32,6 +31,7 @@ namespace WebApi.Controllers.v1
             var filePath = Path.Combine("Storage", clienteInput.Photo.FileName);
 
             using Stream fileStream = new FileStream(filePath, FileMode.Create);
+            
             clienteView.Photo.CopyTo(fileStream);
 
             var cliente = new Cliente(clienteInput.Nome, clienteInput.Email clienteInput.Password, filePath, clienteInput.Cpf, clienteInput.Data_nascimento);
@@ -87,10 +87,9 @@ namespace WebApi.Controllers.v1
             
             var clienteEndereco = new ClienteEndereco(clienteEnderecoInput.Logradouro, clienteEnderecoInput.Numero, clienteEnderecoInput.Complemento, clienteEnderecoInput.Cep,clienteEnderecoInput.ClienteId);
 
-            _
-            return Ok();
-
+            _clienteEnderecoRepository.add(clienteEndereco)
             
+            return Ok();  
         }
     }
 }
