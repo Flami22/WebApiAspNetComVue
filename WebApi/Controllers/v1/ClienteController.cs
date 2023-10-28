@@ -15,9 +15,11 @@ namespace WebApi.Controllers.v1
         private readonly ILogger<ClienteController> _logger;
         private readonly IMapper _mapper;
 
-        public ClienteController(IClienteRepository clienteRepository, ILogger<ClienteController> logger, IMapper mapper)
+        public ClienteController(IClienteRepository clienteRepository, IClienteEndetecoRepository clienteEnderecoRepository,  ILogger<ClienteController> logger, IMapper mapper)
         {
             _clienteRepository = clienteRepository ?? throw new ArgumentNullException(nameof(clienteRepository));
+            
+            _clienteEnderecoRepository = clienteEnderecoRepository ?? throw new ArgumentNullException(nameof(clienteEnderecoRepository));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
         }
@@ -34,7 +36,7 @@ namespace WebApi.Controllers.v1
 
             var cliente = new Cliente(clienteInput.Nome, clienteInput.Email clienteInput.Password, filePath, clienteInput.Cpf, clienteInput.Data_nascimento);
 
-            _clienteRepository.Add(cliente);
+           _clienteRepository.Add(cliente);
 
             return Ok();
         }
@@ -85,7 +87,10 @@ namespace WebApi.Controllers.v1
             
             var clienteEndereco = new ClienteEndereco(clienteEnderecoInput.Logradouro, clienteEnderecoInput.Numero, clienteEnderecoInput.Complemento, clienteEnderecoInput.Cep,clienteEnderecoInput.ClienteId);
 
+            _
             return Ok();
+
+            
         }
     }
 }
